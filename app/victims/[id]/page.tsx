@@ -1,15 +1,18 @@
 import Image from 'next/image';
 import { data } from '../../data';
 import { PersonPlaceHolder } from '../../images';
+export async function generateStaticParams() {
+  const victims = data.map((_, index) => ({ id: index.toString() }));
 
-export default async function VictimPage({
-  params,
-}: {
-  params: Promise<{ id: number }>;
-}) {
-  const { id } = await params;
+  return victims.map((victim) => ({
+    id: victim.id,
+  }));
+}
 
-  const hostage = data[id];
+export default function VictimPage({ params }: { params: { id: string } }) {
+  const { id } = params;
+
+  const hostage = data[Number(id)];
   const hostageName = hostage.name.split(' ')[0];
   return (
     <div className="flex flex-col items-center">

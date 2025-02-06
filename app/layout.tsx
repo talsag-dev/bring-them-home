@@ -18,9 +18,10 @@ export const metadata: Metadata = {
   description: 'A Journal for the hostages',
 };
 
-export const roboto = Roboto({
+const roboto = Roboto({
   variable: '--font-robrto',
   weight: '500',
+  subsets: ['latin'],
 });
 
 export default function RootLayout({
@@ -43,9 +44,6 @@ export default function RootLayout({
             </Link>
             <Link className="p-2 hover:underline" href="/victims">
               <p className="text-sm md:text-base">Victims</p>
-            </Link>
-            <Link className="p-2 hover:underline" href="/help">
-              <p className="text-sm md:text-base">Help</p>
             </Link>
           </nav>
         </header>
